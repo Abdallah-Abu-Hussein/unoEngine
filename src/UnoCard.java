@@ -15,19 +15,12 @@ public class UnoCard {
         return value;
     }
 
-    /**
-     * A card is playable if it matches the top card’s color or value,
-     * or if it is a wild card.
-     */
     public boolean isPlayableOn(UnoCard topCard) {
         return this.color == UnoColor.WILD ||
                 this.color == topCard.getColor() ||
                 this.value == topCard.getValue();
     }
 
-    /**
-     * Returns the card as a colored string for terminal output.
-     */
     public String toColoredString() {
         String colorCode = "";
         switch(color) {

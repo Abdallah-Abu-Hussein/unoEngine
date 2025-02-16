@@ -21,16 +21,23 @@ public class BasicUnoPlayer implements UnoPlayer {
 
     @Override
     public UnoCard playCard(UnoCard topCard) {
-        List<UnoCard> playable = hand.stream()
-                .filter(card -> card.isPlayableOn(topCard))
-                .collect(Collectors.toList());
+        List<UnoCard> playable = new ArrayList<>();
+        // Collect all playable cards in a basic loop
+        for (UnoCard card : hand) {
+            if (card.isPlayableOn(topCard)) {
+                playable.add(card);
+            }
+        }
+        // If no card is playable, return null to signal draw
         if (playable.isEmpty()) {
             return null;
         }
+        // Otherwise, pick a random playable card
         UnoCard chosen = playable.get(random.nextInt(playable.size()));
         hand.remove(chosen);
         return chosen;
     }
+
 
     @Override
     public List<UnoCard> getHand() {

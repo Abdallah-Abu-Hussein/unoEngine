@@ -8,7 +8,6 @@ public class UnoGame extends Game {
     public UnoGame() {
         Scanner scanner = new Scanner(System.in);
 
-        // Ask if the game should be simulated (auto-play with AI only) or played interactively.
         System.out.println("Do you want to simulate the game (auto-play)? (Y/N):");
         String simulationChoice = scanner.nextLine().trim().toUpperCase();
         boolean simulate = simulationChoice.equals("Y") || simulationChoice.equals("YES");
@@ -30,12 +29,11 @@ public class UnoGame extends Game {
         }
 
         if (simulate) {
-            // In simulation mode, create AI players only.
             for (int i = 0; i < numPlayers; i++) {
                 players.add(new BasicUnoPlayer("AI_Player_" + (i + 1)));
             }
         } else {
-            // In interactive mode, allow mix of human and AI players.
+            // to allow mix of human and AI players.
             for (int i = 0; i < numPlayers; i++) {
                 System.out.println("Enter name for player " + (i + 1) + ":");
                 String name = scanner.nextLine();
@@ -49,12 +47,9 @@ public class UnoGame extends Game {
             }
         }
 
-        // Create the deck using the factory.
         UnoDeck deck = new UnoDeck(UnoCardFactory.createStandardUnoDeck());
-        // Pass the simulation flag to the engine.
         engine = new UnoGameEngine(players, deck, simulate);
 
-        // Add an observer to log game events with colored output.
         engine.addObserver(new UnoGameObserver() {
             @Override
             public void onCardPlayed(UnoPlayer player, UnoCard card) {

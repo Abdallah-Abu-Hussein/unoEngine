@@ -3,7 +3,9 @@
 ## Introduction
 
 Uno is a classic card game, first developed by Merle Robbins in 1971, in which players compete to empty their hand by matching the top discard card in color or value. Over the years, it has become popular worldwide, spawning variations with unique house rules and new card types.
+
 ![uno logo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwoR5IjdnkEDkhcmbQ2wDrj-wMOHJ4Tw1Smg&s)
+
 The **Uno Game Engine** is a Java-based framework that allows developers to create and extend Uno game variations while maintaining flexibility and modularity. The engine is built using Object-Oriented Programming (OOP) principles and incorporates several design patterns, including **Factory Pattern**, **Observer Pattern**, and **Strategy Pattern**, ensuring that the game logic is adaptable and maintainable. This documentation outlines the system's architecture, design decisions, implementation details, and guidelines for extending the engine to support new variations and rules.
 
 

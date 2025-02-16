@@ -47,7 +47,8 @@ The Uno Game Engine follows a **modular architecture**, with clearly defined res
 ![](img.png)
 
 ## Sequence Diagram
-![](/asstes/sequence_diagram.png)
+
+![](/asstes/SequnceDiagram.png)
 
 
 ## Implementation
@@ -62,64 +63,61 @@ The Uno Game Engine follows a **modular architecture**, with clearly defined res
 - **ConsoleColors**: Provides ANSI escape sequences for colorized console output.
 
 ### Exception Handling
-
 The system includes **try-catch blocks** around critical game loop operations to ensure stability. If an unexpected error occurs, the game skips the affected player's turn and logs the error.
 
-### Defending Against Clean Code Principles (Uncle Bob)
-1️⃣ Meaningful Names
 
-    Variable and method names in the code are clear and intention-revealing.
-    Example: playCard() instead of doMove().
+### Defending Against Clean Code Principles (Uncle Bob)
+
+1️⃣ Meaningful Names
+> Variable and method names in the code are clear and intention-revealing.
+  Example: playCard() instead of doMove().
 
 2️⃣ Small and Focused Functions
 
-    Functions follow the Single Responsibility Principle.
+>   Functions follow the Single Responsibility Principle.
     Example: UnoDeck.drawCard() only handles drawing, separate from discard logic.
 
 3️⃣ Avoiding Code Smells
-
-    No duplicate code (Don't Repeat Yourself - DRY principle).
+> No duplicate code (Don't Repeat Yourself - DRY principle).
 
 4️⃣ Commenting Strategy
 
-    Uses self-explanatory code instead of unnecessary comments.
+> Uses self-explanatory code instead of unnecessary comments.
     Only essential comments (e.g., TODO, explanations of complex logic) are included.
 
-Defending Against Effective Java (Joshua Bloch)
-1️⃣ Factory Methods Over Constructors
+## Defending Against Effective Java (Joshua Bloch)
 
-    UnoCardFactory follows Item 1: Consider static factory methods instead of constructors.
+1️⃣ Factory Methods Over Constructors
+> UnoCardFactory follows Item 1: Consider static factory methods instead of constructors.
 
 2️⃣ Avoiding Unnecessary Object Creation
-
-    Uses efficient data structures (List<UnoCard> instead of multiple primitive arrays).
+> Uses efficient data structures (List<UnoCard> instead of multiple primitive arrays).
 
 3️⃣ Exception Handling Best Practices
-
-    Uses try-catch blocks around critical sections (Item 69: Use exceptions only for exceptional conditions).
+> Uses try-catch blocks around critical sections (Item 69: Use exceptions only for exceptional conditions).
 
 4️⃣ Favoring Composition Over Inheritance
+> UnoGameEngine composes UnoDeck and UnoPlayer instead of extending them.
 
-    UnoGameEngine composes UnoDeck and UnoPlayer instead of extending them (Item 18).
+### Defending Against SOLID Principles
 
-Defending Against SOLID Principles
 1️⃣ Single Responsibility Principle (SRP)
-
 ✅ Each class has one clear purpose (UnoDeck handles deck management, UnoGameEngine handles game flow).
+
 2️⃣ Open/Closed Principle (OCP)
-
 ✅ New rules can be added without modifying existing classes (UnoGameEngine can be extended for new mechanics).
+
 3️⃣ Liskov Substitution Principle (LSP)
-
 ✅ UnoPlayer interface ensures all player types can be used interchangeably.
+
 4️⃣ Interface Segregation Principle (ISP)
-
 ✅ The code avoids large interfaces. The UnoPlayer interface has only essential methods.
+
 5️⃣ Dependency Inversion Principle (DIP)
-
 ✅ UnoGameEngine depends on abstractions (UnoPlayer) instead of concrete classes (BasicUnoPlayer, HumanUnoPlayer).
-### Detailed Class Explanations
 
+
+### Detailed Class Explanations
 Below is an overview of each class with code and an explanation of its role and functionality within the engine.&#x20;
 
 ---
